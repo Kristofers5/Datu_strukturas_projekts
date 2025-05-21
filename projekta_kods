@@ -3,7 +3,36 @@ from bs4 import BeautifulSoup
 
 adrese = "https://www.royalroad.com/fiction/65058/pale-lights/chapter/1124855/chapter-1"
 
+# vajag
+
+
+
+
+
+
+
+
+
+
+
+
 lapa = requests.get(adrese)
 if lapa.status_code == 200:
     lapas_saturs = BeautifulSoup(lapa.content, "html.parser")
-    print(lapas_saturs.prettify())
+    # print(lapas_saturs.prettify())
+
+    content_div = lapas_saturs.find("div", {"class": "chapter-content"})
+
+    paragraphs = content_div.find_all("p")
+
+
+    # test print
+
+    # for line in paragraphs:
+    #     print(line.contents)
+
+
+    with open("demofile.txt", "a") as f:
+        for line in paragraphs:
+            f.write(line.get_text())
+            f.write("\n\n")
