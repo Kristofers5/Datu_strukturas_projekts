@@ -1,0 +1,1 @@
+# Datu_strukturas_projekts
