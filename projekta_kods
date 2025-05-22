@@ -96,19 +96,20 @@ elif funkcija == "grāmata":
 
         gramatu_serija = LinkedList()
 
+        n = 1
         book = 1
-        while book < 8:
+        while n <= 8:
 
+            for li in ul_div[n].find_all('li'):
 
-
-            
-
-            for li in ul_div[book].find_all('li'):
-
+                if n == 2:
+                    break
+                
                 a = li.find('a')
                 if a:
                     link = a.get('href')
-                # link works
+                    
+
                 adrese = link
                 lapa = requests.get(adrese)
                 if lapa.status_code == 200:
@@ -118,7 +119,17 @@ elif funkcija == "grāmata":
 
                     paragraphs = content_div.find_all("p")
 
+                    try:
+                        f = open("PGtE.txt", "x")
+                    except:
+                        print("file already exists")
 
+                    with open("PGtE.txt", "a") as f:
+                        f.write("\n\n\n\n")
+
+                        for line in paragraphs:
+                            f.write(line.get_text())
+                            f.write("\n\n")
 
 
 
@@ -132,10 +143,15 @@ elif funkcija == "grāmata":
 
             
 
-            book = book + 1
+            n = n + 1
+            if n == 2:
+                continue
+            else:
+                book = book + 1
 
 
-        gramatu_serija.print()
+        # gramatu_serija.print()
+        print("Pabeigts!!!")
 
 
 
