@@ -26,7 +26,7 @@ class LinkedList:
     def print(self):
         current = self.head
         while current:
-            print(current.book, current.chapter)
+            print(current.book, current.chapter, current.text)
             current = current.next
 
 
@@ -133,11 +133,13 @@ elif funkcija == "grāmata":
                             f.write(line.get_text())
                             f.write("\n\n")
 
-                            text = text + line.getText() + " "
+                            text = text + line.get_text() + " "
 
                     chapter_name = li.getText()
+                    
+                    # print(text)
 
-                    gramatu_serija.append((f"Book {book}"), (f"{chapter_name}"), (f"{text}"))
+                    gramatu_serija.append((f"Book {book}"), (f"{chapter_name}"), (f"aaaaaaaaa {text}"))
 
 
                 n = n + 1
