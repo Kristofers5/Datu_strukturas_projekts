@@ -1,6 +1,39 @@
 import requests
 from bs4 import BeautifulSoup
 
+
+class Node:
+    def __init__(self, book, chapter, text):
+        self.book = book
+        self.chapter = chapter
+        self.text = text
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def append(self, book, chapter, text):
+        new_node = Node(book, chapter, text)
+        if not self.head:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node
+
+    def print(self):
+        current = self.head
+        while current:
+            print(current.book, current.chapter)
+            current = current.next
+
+
+
+
+
+
 print("nodaļa vai grāmata")
 funkcija = input()
 
@@ -43,6 +76,7 @@ if funkcija == "nodaļa":
                 f.write(line.get_text())
                 f.write("\n\n")
 
+
 elif funkcija == "grāmata":
     
     adrese = "https://practicalguidetoevil.wordpress.com/table-of-contents/"
@@ -52,12 +86,29 @@ elif funkcija == "grāmata":
     if lapa.status_code == 200:
         lapas_saturs = BeautifulSoup(lapa.content, "html.parser")
 
+        ul_div = lapas_saturs.find_all("ul")
+
+
+        # prints only links to chapters in book 1
+        # for line in ul_div[1]:
+        #     print(line)
+
+
+        gramatu_serija = LinkedList()
 
 
 
-    exit()
+
+
+        # gramatu_serija.append(("book 9001"), ("chapter: 2222"), ("texty"))
+        # gramatu_serija.append(("book 1"), ("chapter: 2"), ("te"))
+
+        # gramatu_serija.print()
+
+
+
 
 
 else:
-    print("error")
+    print("Kļūda, nepareiza komanda!")
     exit()
