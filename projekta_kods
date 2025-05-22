@@ -98,63 +98,57 @@ elif funkcija == "grāmata":
 
         n = 1
         book = 1
-        while n <= 8:
 
-            for li in ul_div[n].find_all('li'):
+        try:
+            f = open("PGtE.txt", "x")
+        except:
+            print("file already exists")
 
-                if n == 2:
-                    break
-                
-                a = li.find('a')
-                if a:
-                    link = a.get('href')
+        with open("PGtE.txt", "a") as f:
+            while n <= 8:
+
+                for li in ul_div[n].find_all('li'):
+
+                    text = ""
+                    if n == 2:
+                        break
                     
+                    a = li.find('a')
+                    if a:
+                        link = a.get('href')
+                        
 
-                adrese = link
-                lapa = requests.get(adrese)
-                if lapa.status_code == 200:
-                    lapas_saturs = BeautifulSoup(lapa.content, "html.parser")
+                    adrese = link
+                    lapa = requests.get(adrese)
+                    if lapa.status_code == 200:
+                        lapas_saturs = BeautifulSoup(lapa.content, "html.parser")
 
-                    content_div = lapas_saturs.find("div", {"class": "entry-content"})
+                        content_div = lapas_saturs.find("div", {"class": "entry-content"})
 
-                    paragraphs = content_div.find_all("p")
+                        paragraphs = content_div.find_all("p")
 
-                    try:
-                        f = open("PGtE.txt", "x")
-                    except:
-                        print("file already exists")
-
-                    with open("PGtE.txt", "a") as f:
                         f.write("\n\n\n\n")
 
                         for line in paragraphs:
                             f.write(line.get_text())
                             f.write("\n\n")
 
+                            text = text + line.getText() + " "
+
+                    chapter_name = li.getText()
+
+                    gramatu_serija.append((f"Book {book}"), (f"{chapter_name}"), (f"{text}"))
 
 
-
-                text = link
-
-                chapter_name = li.getText()
-
-                gramatu_serija.append((f"Book {book}"), (f"{chapter_name}"), (text))
-
-
-            
-
-            n = n + 1
-            if n == 2:
-                continue
-            else:
-                book = book + 1
+                n = n + 1
+                if n == 2:
+                    continue
+                else:
+                    book = book + 1
 
 
-        # gramatu_serija.print()
+        gramatu_serija.print()
         print("Pabeigts!!!")
-
-
-
 
 
 else:
