@@ -96,14 +96,46 @@ elif funkcija == "grāmata":
 
         gramatu_serija = LinkedList()
 
+        book = 1
+        while book < 8:
+
+
+
+            
+
+            for li in ul_div[book].find_all('li'):
+
+                a = li.find('a')
+                if a:
+                    link = a.get('href')
+                # link works
+                adrese = link
+                lapa = requests.get(adrese)
+                if lapa.status_code == 200:
+                    lapas_saturs = BeautifulSoup(lapa.content, "html.parser")
+
+                    content_div = lapas_saturs.find("div", {"class": "entry-content"})
+
+                    paragraphs = content_div.find_all("p")
 
 
 
 
-        # gramatu_serija.append(("book 9001"), ("chapter: 2222"), ("texty"))
-        # gramatu_serija.append(("book 1"), ("chapter: 2"), ("te"))
 
-        # gramatu_serija.print()
+
+                text = link
+
+                chapter_name = li.getText()
+
+                gramatu_serija.append((f"Book {book}"), (f"{chapter_name}"), (text))
+
+
+            
+
+            book = book + 1
+
+
+        gramatu_serija.print()
 
 
 
