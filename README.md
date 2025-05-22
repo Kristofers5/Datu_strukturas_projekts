@@ -1,7 +1,7 @@
 Projetks datu struktūrās un algoritmos.
 
 Projekta uzdevums
-Projekta uzdevums ir veikt 2 funkcijas: pirmā no tām ir nolasīt noteiktas grāmats nodaļas tekstu un saglabāt to. Programma nolasa un ieraksta teksta failā nodaļu, kādai grāmatai no mājaslapas royalroad.com, kurai ir iedots links uz šo nodaļu. Otra funkcija programmai ir webscrapot noteiktu grāmatu sēriju ar nosaukumu "Practical Guide to Evil", visas 7 grāmatas, un saglabāt šo grāmatu nodaļas teksta failā izveidojot 1 failu, ko ir iespējams ielādēt. Kā arī programma šīm grāmatām saglabā katru nodaļu kopā ar tās nosaukumu un grāmatas nummuru linked listā.
+Projekta uzdevums ir veikt 2 funkcijas: pirmā no tām ir nolasīt noteiktas grāmats nodaļas tekstu un saglabāt to. Programma nolasa un ieraksta teksta failā nodaļu, kādai grāmatai no mājaslapas royalroad.com, kurai ir iedots links uz šo nodaļu. Otra funkcija programmai ir webscrapot noteiktu grāmatu sēriju ar nosaukumu "Practical Guide to Evil", visas 7 grāmatas, un saglabāt šo grāmatu nodaļas teksta failā izveidojot 1 failu, ko ir iespējams ielādēt. Kā arī programma šīm grāmatām saglabā katru nodaļu kopā ar tās nosaukumu un grāmatas nummuru linked listā ar ideju iespējams nākotnē izmantot, lai varētu analizēt katru grāmatas tekstu, kā, piemēram, katras grāmatas vārdu daudzumu.
 Šī programma ir izveidota ar nolūku būt spējai ielādēt noteiktas web grāmatas, kam nav pieejamas tādas funkcijas.
 
 Python bibliotēkas
