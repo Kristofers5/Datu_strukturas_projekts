@@ -1,20 +1,19 @@
 import requests
 from bs4 import BeautifulSoup
 
-adrese = "https://www.royalroad.com/fiction/65058/pale-lights/chapter/1124855/chapter-1"
+print("nodaļa vai grāmata")
+funkcija = input()
 
-# vajag
+if funkcija == "nodaļa":
+    print("Ievadiet linku uz nodaļu:")
+    adrese = input()
+    print("Faila nosaukums:")
+    faila_nosaukums = input()
+else:
+    print("error")
+    exit()
 
-
-
-
-
-
-
-
-
-
-
+# adrese = "https://www.royalroad.com/fiction/65058/pale-lights/chapter/1124855/chapter-1"
 
 lapa = requests.get(adrese)
 if lapa.status_code == 200:
@@ -31,8 +30,14 @@ if lapa.status_code == 200:
     # for line in paragraphs:
     #     print(line.contents)
 
+    try:
+        f = open(f"{faila_nosaukums}.txt", "x")
+    except:
+        print("file already exists")
 
-    with open("demofile.txt", "a") as f:
+    with open(f"{faila_nosaukums}.txt", "w") as f:
+        f.write(f"{faila_nosaukums}\n\n\n\n")
+
         for line in paragraphs:
             f.write(line.get_text())
             f.write("\n\n")
