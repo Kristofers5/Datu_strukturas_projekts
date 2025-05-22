@@ -139,7 +139,7 @@ elif funkcija == "grāmata":
                     
                     # print(text)
 
-                    gramatu_serija.append((f"Book {book}"), (f"{chapter_name}"), (f"aaaaaaaaa {text}"))
+                    gramatu_serija.append((f"Book {book}"), (f"{chapter_name}"), (f" {text}"))
 
 
                 n = n + 1
@@ -150,7 +150,6 @@ elif funkcija == "grāmata":
 
 
         gramatu_serija.print()
-        print("Pabeigts!!!")
 
 
 else:
